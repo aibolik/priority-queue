@@ -48,6 +48,14 @@ describe('Node', () => {
 			expect(parent.left).to.equal(leftChild);
 			expect(parent.right).to.equal(rightChild);
 		});
+
+		it('assign child.parent to this', () => {
+			parent.appendChild(leftChild)
+			parent.appendChild(rightChild)
+
+			expect(leftChild.parent).to.equal(parent)
+            expect(rightChild.parent).to.equal(parent)
+		})
 	});
 
 	describe('#removeChild', () => {
