@@ -54,11 +54,18 @@ class Node {
 
             parent.left = left.left
 
-            left.right = parent.right
-
             parent.right = left.right
 
+            left.right = right
+
             left.left = parent
+
+            if (parent.left) {
+                parent.left.parent = parent
+            }
+            if (parent.right) {
+                parent.right.parent = parent
+            }
 
             if (right !== null) {
                 right.parent = left
@@ -75,11 +82,18 @@ class Node {
 
             parent.left = right.left
 
-            right.left = parent.left
+            right.left = left
 
             parent.right = right.right
 
             right.right = parent
+
+            if (parent.left) {
+                parent.left.parent = parent
+            }
+            if (parent.right) {
+                parent.right.parent = parent
+            }
 
             if (left !== null) {
                 left.parent = right

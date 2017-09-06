@@ -314,7 +314,7 @@ describe('MaxHeap', () => {
 			h.push(0, 0);
 		});
 
-		it('should remove last inserted node and assing it to root', () => {
+		it('should remove last inserted node and assign it to root', () => {
 			const lastInsertedNode = h.root.right;
 			const left = h.root.left;
 
