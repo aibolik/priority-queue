@@ -58,10 +58,19 @@ class MaxHeap {
 
 		if (this.root.parent && this.root.parent.left === lastInsertedNode) {
 			this.root.parent.left = null
+
 		}
         if (this.root.parent && this.root.parent.right === lastInsertedNode) {
             this.root.parent.right = null
         }
+
+        if (!this.root.left || !this.root.right) {
+            this.parentNodes.unshift(this.root)
+        }
+
+        if (this.root.parent && this.root.parent !== detached) {
+			this.parentNodes.unshift(this.root.parent)
+		}
 		this.root.parent = detached.parent
 
 		if (detached.left) {
@@ -71,9 +80,8 @@ class MaxHeap {
             detached.right.parent = this.root
         }
 
-        if (!this.root.left || !this.root.right) {
-			this.parentNodes.unshift(this.root)
-		}
+
+
 	}
 
 	size() {
@@ -159,7 +167,7 @@ class MaxHeap {
                 if (this.parentNodes[i] === maxNode) {
                     node1 = i
                 }
-                if (node.parent !== null && this.parentNodes[i] === maxNode.parent) {
+                if (maxNode.parent !== null && this.parentNodes[i] === maxNode.parent) {
                     node2 = i
                 }
             }
